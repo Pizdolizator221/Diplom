@@ -11,13 +11,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                    <router-link class="nav-link" to="/">Главная</router-link>
+                        <form method="get" action="http://localhost:3000/api/users">
+                            <input type="text" name="username" class="form-control mr-sm-2" placeholder="Поиск">
+                        </form>
                     </li>
                     <li class="nav-item">
-                    <router-link class="nav-link" to="/about">Информация</router-link>
+                        <router-link class="nav-link" to="/">Главная</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/about">Информация</router-link>
                     </li>
                     <li class="nav-item ml-4">
-                    <b-button v-b-modal.modal-auth>Вход</b-button>
+                        <b-button v-b-modal.modal-auth>Вход</b-button>
                     </li>
                 </ul>
                 </div>

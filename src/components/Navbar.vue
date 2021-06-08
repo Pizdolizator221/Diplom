@@ -42,7 +42,7 @@
 
             <p class="lead text-center mt-3">
                 <b-button @click="$bvModal.hide('modal-auth')" class="bg-white border-white">
-                <router-link to="/" > Зарегестрироваться </router-link>
+                <router-link to="/register" > Зарегестрироваться </router-link>
                 </b-button>
             </p>
 

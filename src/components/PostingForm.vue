@@ -1,5 +1,5 @@
 <template>
-    <b-modal id='modal-posting' title="Авторизация" hide-footer>
+    <b-modal id='modal-posting' title="Форма постинга" hide-footer>
             <div class="form-group">
                 <label class="" for="username">Ползатель: </label>
                 <input class="form-control" type="text" id="username" v-model="username">
@@ -12,14 +12,8 @@
 
             <div class="form-group">
                 <label class="" for="content">Текст: </label>
-                <textarea id="content" v-model="content" cols="30" rows="10"></textarea>
+                <textarea class="form-control" id="content" v-model="content" cols="30" rows="10"></textarea>
             </div>
-
-            <p class="lead text-center mt-3">
-                <b-button @click="$bvModal.hide('modal-posting')" class="bg-white border-white">
-                <router-link to="/" > Закрыть форму постинга </router-link>
-                </b-button>
-            </p>
 
             <button class="btn btn-primary btn-block" @click="createThread"> Подтвердить </button>
         </b-modal>
@@ -40,9 +34,9 @@ export default ({
     methods: {
         createThread: function() {
             const thread = {
-                username: this.username,
+                authorUsername: this.username,
                 title: this.title,
-                content: this.content
+                contentText: this.content
             };
             axios.post("http://localhost:4000/api/threads/create", thread)
                 .catch(error=> {

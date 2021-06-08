@@ -3,9 +3,8 @@
     <div class="container mt-5">
       <h1 class="display-4 text-center">Main page</h1>
       <p class="text-center lead">
-        aboba <br>
-        aboba <br>
-        amogus <br>
+        Добро пожаловать <br>
+        <b-button v-b-modal.modal-posting class="btn btn-primary">Открыть форму постинга</b-button>
       </p>
     </div>
 
@@ -14,6 +13,9 @@
         {{ thread.contentText }}
       </div>
     </section>
+
+
+    
   </div>
 </template>
 

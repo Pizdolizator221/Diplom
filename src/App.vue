@@ -2,6 +2,7 @@
   <div id="app">
     <Navbar/>
     <router-view/>
+    <PostingForm/>
   </div>
 </template>
 
@@ -14,11 +15,13 @@
 
 <script>
   import Navbar from './components/Navbar'
+  import PostingForm from './components/PostingForm.vue'
 
   export default {
     name: 'App',
     components: {
-      'Navbar': Navbar
+      'Navbar': Navbar,
+      'PostingForm': PostingForm
     }
   }
 </script>

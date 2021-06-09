@@ -76,14 +76,12 @@
                     </div>
                 </form>
             </div>
-            <button class="btn btn-primary ml-auto mr-auto d-block" @click="createUser()">Подтвердить</button>
+            <button class="btn btn-primary ml-auto mr-auto d-block" @click="register()">Подтвердить</button>
         </div>
     </fieldset>
 </template>
 
 <script>
-import usersService from '../../services/usersService';
-
 const nameRegex = /[А-Яа-я]/;
 const emailRegex = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/;
 const phoneRegex = /^((\+7|7|8)+([0-9]){10})$/;
@@ -97,7 +95,8 @@ export default ({
             email: '',
             password: '',
             passwordRepeat: '',
-            phoneNumber: ''
+            phoneNumber: '',
+            group: 'И-17-1'
         }
     }, 
     computed: {
@@ -116,10 +115,8 @@ export default ({
         phoneNumberError() { return (!phoneRegex.test(this.phoneNumber)) }
     },
     methods: {
-        async createUser () {
-            if(this.firstNameError || this.lastNameError || this.emailError || this.passwordError || this.phoneNumberError) return alert ('Заполните форму регистрации');
-
-            const requestBody = {
+        register () {
+            const data = {
                 username: this.username,
                 firstName: this.firstName,
                 lastName: this.lastName,
@@ -128,9 +125,9 @@ export default ({
                 password: this.password,
                 phoneNumber: this.phoneNumber
             };
-
-            await usersService.signup(requestBody);
-            this.$router.push('/');
+            this.$store.dispatch('register', data)
+                .then(() => this.$router.push('/'))
+                .catch(err => console.log(err));
         }
     }
 })

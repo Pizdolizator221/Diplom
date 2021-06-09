@@ -1,32 +1,53 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
-import createUser from '../views/users/CreateUser.vue';
+import store from '../store/index';
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/register',
-    component: createUser
-  },
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+
 
 const router = new VueRouter({
-  routes
+  mode: 'history',
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: () => import('../views/Home.vue')
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: () => import('../views/users/CreateUser.vue')
+    },
+    {
+      path: '/feed',
+      name: 'Feed',
+      component: () => import('../views/Feed.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/about',
+      name: 'About',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/About.vue')
+    }
+  ]
+});
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters.isLoggedIn) {
+      next()
+      return
+    }
+    alert('необходимо войти')
+  } else {
+    next() 
+  }
 })
 
 export default router

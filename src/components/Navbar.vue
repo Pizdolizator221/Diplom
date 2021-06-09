@@ -21,32 +21,39 @@
                     <li class="nav-item">
                         <router-link class="nav-link" to="/about">Информация</router-link>
                     </li>
-                    <li class="nav-item ml-4">
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/feed">Feed</router-link>
+                    </li>
+                    <li class="nav-item ml-4" v-if="!isLoggedIn">
                         <b-button v-b-modal.modal-auth>Вход</b-button>
+                    </li>
+                    <li class="nav-item ml-4" v-else>
+                        <b-button @click="logout()">Выход</b-button>
                     </li>
                 </ul>
                 </div>
             </div>
         </nav>
 
-        <b-modal id='modal-auth' title="Авторизация" hide-footer>
-            <div class="form-group">
-                <label class="" for="email">Почта: </label>
-                <input class="form-control" type="email" id="email" v-model="authEmail">
-            </div>
-
-            <div class="form-group">
-                <label class="" for="password">Пароль: </label>
-                <input class="form-control" type="password" id="password" v-model="authPassword">
-            </div>
-
-            <p class="lead text-center mt-3">
-                <b-button @click="$bvModal.hide('modal-auth')" class="bg-white border-white">
-                <router-link to="/register" > Зарегестрироваться </router-link>
-                </b-button>
-            </p>
-
-            <button class="btn btn-primary btn-block" @click="auth()"> Войти </button>
-        </b-modal>
+        <LoginModal/>
     </div>
 </template>
+
+<script>
+import LoginModal from './LoginModal.vue';
+
+export default ({
+    components: {
+        'LoginModal': LoginModal
+    },
+    computed: {
+      isLoggedIn : function(){ return this.$store.getters.isLoggedIn}
+    },
+    methods: {
+        logout () {
+        this.$store.dispatch('logout')
+          .then(() => this.$router.push('/register'));
+      }
+    }
+})
+</script>

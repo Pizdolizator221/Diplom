@@ -10,6 +10,9 @@
 
     <section>
       <div class="jumbotron" v-for="thread in threads" v-bind:key="thread._id">
+        <h4 class="text-center">
+          <button class="btn btn-link" @click="open(thread._id)"> {{thread.title}} </button>
+        </h4>
         {{ thread.contentText }}
       </div>
     </section>
@@ -21,6 +24,7 @@
 
 <script>
   import axios from 'axios';
+  // import threadsService from '../../services/threadsService';
 
   export default {
     name: 'Feed',
@@ -31,6 +35,11 @@
     },
     mounted () {
       axios.get('http://localhost:4000/api/threads').then(res => (this.threads = res.data));
+    },
+    methods: {
+      open(_id) {
+        this.$router.push(`/thread/${_id}`);
+      }
     }
   }
 </script>

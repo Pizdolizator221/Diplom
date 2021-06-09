@@ -22,10 +22,16 @@ const router = new VueRouter({
     {
       path: '/feed',
       name: 'Feed',
-      component: () => import('../views/Feed.vue'),
+      component: () => import('../views/Threads/Feed.vue'),
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path: '/thread/:_id',
+      name: 'Thread',
+      component: () => import('../views/Threads/Thread.vue'),
+      props: true
     },
     {
       path: '/about',

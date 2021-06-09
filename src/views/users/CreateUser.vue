@@ -129,7 +129,7 @@ export default ({
                 phoneNumber: this.phoneNumber
             };
 
-            await usersService.createUser(requestBody);
+            await usersService.signup(requestBody);
             this.$router.push('/');
         }
     }

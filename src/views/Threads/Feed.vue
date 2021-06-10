@@ -8,14 +8,14 @@
       </p>
     </div>
 
-    <section>
+    <div>
       <div class="jumbotron" v-for="thread in threads" v-bind:key="thread._id">
         <h4 class="text-center">
           <button class="btn btn-link" @click="open(thread._id)"> {{thread.title}} </button>
         </h4>
         {{ thread.contentText }}
       </div>
-    </section>
+    </div>
 
 
     

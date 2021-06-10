@@ -28,6 +28,15 @@ const router = new VueRouter({
       }
     },
     {
+      path: '/users',
+      name: 'Users',
+      component: () => import('../views/users/UsersList.vue'),
+      meta: {
+        requiresAuth: true,
+        adminOnly: true
+      }
+    },
+    {
       path: '/thread/:_id',
       name: 'Thread',
       component: () => import('../views/Threads/Thread.vue'),
@@ -54,6 +63,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next() 
   }
-})
+});
 
 export default router

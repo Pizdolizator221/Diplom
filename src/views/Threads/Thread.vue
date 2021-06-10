@@ -1,5 +1,13 @@
 <template>
-    <h1> {{thread.title}} </h1>
+    <fieldset class="jumbotron mt-5">
+        <legend class="text-center display-4">
+            {{thread.title}}
+        </legend>
+
+        <div class="container">
+            {{thread.contentText}}
+        </div>
+    </fieldset>
 </template>
 
 <script>

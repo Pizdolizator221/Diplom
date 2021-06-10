@@ -36,7 +36,7 @@ export default ({
                 password: this.authPassword
             }
             this.$store.dispatch('login', requestBody)
-                .then(() => this.$router.push('/'))
+                .then(() => this.$router.push('/feed'))
                 .catch(err => console.log(err));
         }
     }

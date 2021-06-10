@@ -1,10 +1,5 @@
 <template>
-    <b-modal id='modal-posting' title="Форма постинга" hide-footer>
-            <div class="form-group">
-                <label class="" for="username">Ползатель: </label>
-                <input class="form-control" type="text" id="username" v-model="username">
-            </div>
-            
+    <b-modal id='modal-posting' title="Форма постинга" hide-footer> 
             <div class="form-group">
                 <label class="" for="title">Заголовок: </label>
                 <input class="form-control" type="text" id="title" v-model="title">
@@ -26,15 +21,17 @@ export default ({
     name: 'PostingForm',
     data() {
         return {
-            username: '',
             title: '',
             content: ''
         }
     },
     methods: {
         createThread: function() {
+            this.$bvModal.hide('modal-posting')
+            const user = localStorage.getItem('user');
+            const username = JSON.parse(user).username;
             const thread = {
-                authorUsername: this.username,
+                authorUsername: username,
                 title: this.title,
                 contentText: this.content
             };

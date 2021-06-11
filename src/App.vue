@@ -4,6 +4,7 @@
     <router-view/>
     <PostingForm/>
     <CommentForm />
+    <BookForm />
   </div>
 </template>
 
@@ -18,13 +19,15 @@
   import Navbar from './components/Navbar'
   import PostingForm from './components/PostingForm.vue'
   import CommentForm from './components/CommentForm.vue'
+  import BookForm from './components/BookForm.vue'
 
   export default {
     name: 'App',
     components: {
       'Navbar': Navbar,
       'PostingForm': PostingForm,
-      'CommentForm': CommentForm
+      'CommentForm': CommentForm,
+      'BookForm': BookForm
     }
   }
 </script>

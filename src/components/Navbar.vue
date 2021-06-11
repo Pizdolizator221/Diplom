@@ -10,9 +10,6 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <li v-if="isAdmin" class="nav-item">
-                        <router-link class="nav-link" to="/users">Пользователи</router-link>
-                    </li>
                     <li class="nav-item">
                         <router-link class="nav-link" to="/">Главная</router-link>
                     </li>
@@ -21,6 +18,12 @@
                     </li>
                     <li class="nav-item">
                         <router-link v-if="isLoggedIn" class="nav-link" to="/feed">Feed</router-link>
+                    </li>
+                    <li v-if="isLoggedIn" class="nav-item">
+                        <router-link class="nav-link" to="/library">Библиотека</router-link>
+                    </li>
+                    <li v-if="isAdmin" class="nav-item">
+                        <router-link class="nav-link" to="/users">Пользователи</router-link>
                     </li>
                     <li class="nav-item ml-4" v-if="!isLoggedIn">
                         <b-button v-b-modal.modal-auth>Вход</b-button>

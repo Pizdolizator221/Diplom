@@ -13,6 +13,7 @@
             <div class="container">
                 {{thread.contentText}}
                 <br>
+                <hr>
                 <span class="text-primary">
                     - {{thread.authorUsername}}
                 </span>

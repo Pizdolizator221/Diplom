@@ -17,7 +17,7 @@
                         <router-link class="nav-link" to="/about">Информация</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link v-if="isLoggedIn" class="nav-link" to="/feed">Feed</router-link>
+                        <router-link v-if="isLoggedIn" class="nav-link" to="/feed">Посты</router-link>
                     </li>
                     <li v-if="isLoggedIn" class="nav-item">
                         <router-link class="nav-link" to="/library">Библиотека</router-link>

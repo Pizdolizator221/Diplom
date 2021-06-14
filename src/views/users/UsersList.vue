@@ -1,8 +1,11 @@
 <template>
     <section>
         <div class="jumbotron" v-for="user in users" v-bind:key="user._id">
+            <h3 class="text-center">
+                {{user.lastName}} {{user.firstName}}, {{user.group}}
+            </h3>
             <h4 class="text-center">
-                {{ user.username }}
+                {{ user.username }} ({{user.email}})
             </h4>
         </div>
     </section>

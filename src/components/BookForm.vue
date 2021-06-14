@@ -55,11 +55,6 @@ export default ({
                 year: this.year
             };
             booksService.addBook(book);
-
-            // axios.post("http://localhost:4000/api/books/add", book)
-            //     .catch(error=> {
-            //         console.log(error.message);
-            //     });
         }
     }
 })

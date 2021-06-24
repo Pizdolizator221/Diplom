@@ -4,6 +4,7 @@
             <h3 class="text-center">
                 {{user.lastName}} {{user.firstName}}, {{user.group}}
             </h3>
+            <hr class="bg-dark">
             <h4 class="text-center">
                 {{ user.username }} ({{user.email}})
             </h4>
